@@ -1,0 +1,14 @@
+[package]
+name = "explainshell-cli"
+version = "0.1.0"
+authors = ["p1g30n <anatol@riseup.net>"]
+edition = "2018"
+
+[dependencies]
+url = "*"
+select = "*"
+reqwest = "*"
+
+[[bin]]
+name = "explain"
+path = "src/main.rs"
