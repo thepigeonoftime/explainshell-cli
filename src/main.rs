@@ -7,8 +7,11 @@ extern crate reqwest;
 extern crate select;
 
 use url::percent_encoding::{utf8_percent_encode, DEFAULT_ENCODE_SET};
+use colored::*;
+use regex::Regex;
 use select::document::Document;
 use select::predicate::Attr;
+
 
 fn main() {
 	let args: Vec<String> = env::args().collect();
@@ -26,9 +29,20 @@ fn explain(query: String) {
     let url = format!("{}{}", base_url, query);
     let resp = reqwest::get(&url).unwrap();
     assert!(resp.status().is_success());
-    let delimiter = format!("\n{}\n", "_".repeat(50));
+    let delimiter = format!("\n\n{}", "_".repeat(50));
+    let regex = Regex::new("^[ \t]*-.+").unwrap();
     Document::from_read(resp)
         .unwrap()
         .find(Attr("class", "help-box"))
-        .for_each(|x| println!("{}{}", x.text(), delimiter));
+        //.for_each(|x| println!("\n{}{}", x.text().replace("\n   ", "\n"), delimiter));
+        .for_each(|node| {
+            node.text().split("\n").collect::<Vec<_>>().iter().for_each(|line| {
+                let mut output = line.to_string().white();
+                 if regex.is_match(line) {
+                    output = line.to_string().bold().red();
+                }
+                print!("\n{}", output);
+            });
+            println!("{}", delimiter)
+        });
 }

@@ -6,8 +6,10 @@ edition = "2018"
 
 [dependencies]
 url = "*"
+regex = "*"
 select = "*"
 reqwest = "*"
+colored = "*"
 
 [[bin]]
 name = "explain"
