@@ -17,7 +17,7 @@ Needs the Rust Toolchain (available at [https://rustup.rs/]() ).
 ##### Example:  
 ``` explain tar -xzvf```
 
-Output:
+##### Output:
 
 ```
 The GNU version of the tar archiving utility
