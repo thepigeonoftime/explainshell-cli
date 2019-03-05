@@ -2,15 +2,11 @@ use std::env;
 use std::process;
 use std::io::prelude::*;
   
-extern crate url; 
-extern crate reqwest;
-extern crate select;
-
-use url::percent_encoding::{utf8_percent_encode, DEFAULT_ENCODE_SET};
 use colored::*;
 use regex::Regex;
 use select::document::Document;
 use select::predicate::Attr;
+use url::percent_encoding::{utf8_percent_encode, DEFAULT_ENCODE_SET};
 
 
 fn main() {
