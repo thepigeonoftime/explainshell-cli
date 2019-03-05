@@ -5,9 +5,9 @@ authors = ["p1g30n <anatol@riseup.net>"]
 edition = "2018"
 
 [dependencies]
-url = "*"
-select = "*"
-reqwest = "*"
+url = "1.7.2"
+select = "0.4.2"
+reqwest = "0.9.11"
 
 [[bin]]
 name = "explain"
