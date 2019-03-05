@@ -10,7 +10,7 @@ fn main() {
     let args: Vec<String> = env::args().collect();
     let mut stderr = std::io::stderr();
     if args.len() < 2 {
-        writeln!(&mut stderr, "Usage: explain [COMMAND] [ARG 1]..[ARG N]\nExample: explain ls -l -a\n").expect("couldn't write to stderr");
+        writeln!(&mut stderr, "\nUsage: explain COMMAND [ARGS]\nExample: explain tar -xzvf\n").expect("couldn't write to stderr");
         process::exit(1);
     }
     let query = utf8_percent_encode(&args[1..].join(" "), DEFAULT_ENCODE_SET).to_string();
